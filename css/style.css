@@ -4331,3 +4331,33 @@ body.is-ready .premium-build {
     padding-top: 2rem;
   }
 }
+/* ============================================================
+   MOBILE HERO — FORCE NO ABOVE-THE-FOLD ANIMATION
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero__title-inner,
+  .hero__accent,
+  .hero__lede,
+  .hero__actions,
+  .hero__meta-row,
+  .hero__glow,
+  .hero__strip {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .hero__title-line {
+    overflow: visible !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero__glow {
+    display: none !important;
+  }
+}
