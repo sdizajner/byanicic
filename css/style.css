@@ -3156,13 +3156,13 @@ body.is-ready .premium-build {
   }
 }
 /* =====================================================================
-   19. MOBILE HEADER v2 — DARK & GOLD PREMIUM (≤ 768px)
+   19. MOBILE HEADER v3 — COMPACT CREAM (≤ 768px)
    ---------------------------------------------------------------------
-   Dodaje se na KRAJ style.css. Override-uje prvu mobilnu verziju.
-   - Tamni ink header sa zlatnim accentima
-   - Logo ~92px, centriran, inverted (cream/gold)
-   - Hamburger u zlatnom prstenu, ispod logoa
-   - Zlatna hairline ispod headera kao separator
+   Dodaje se na KRAJ style.css. Override-uje sve prethodne mobile verzije.
+   - Cream pozadina (logo se vidi savrseno, isti background kao sajt)
+   - Logo levo ~56px, hamburger desno u zlatnom prstenu — JEDAN RED
+   - Ukupna visina headera ~80px — ne smeta hero-u
+   - Zlatna hairline ispod headera kao premium separator
    - Sve striktno unutar @media (max-width: 768px)
    ===================================================================== */
 
@@ -3175,119 +3175,76 @@ body.is-ready .premium-build {
 @media (max-width: 768px) {
 
   /* -----------------------------------------------------------------
-     HEADER — tamni butik
+     HEADER — kompaktan cream
      ----------------------------------------------------------------- */
   .site-header {
-    padding: 1.05rem var(--gutter) 1.05rem;
-    background: linear-gradient(180deg, #0E0D0B 0%, #17130F 100%);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    padding: 0.85rem var(--gutter);
+    background: rgba(242, 239, 233, 0.88);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
     border-bottom: none;
 
-    /* zlatna hairline ispod headera, uklopljena u dark */
+    /* Suptilna dvostruka zlatna hairline ispod headera */
     box-shadow:
-      0 1px 0 rgba(200, 168, 118, 0.22),
-      0 2px 0 rgba(200, 168, 118, 0.06),
-      0 14px 30px -18px rgba(0, 0, 0, 0.7);
+      0 1px 0 rgba(200, 168, 118, 0.32),
+      0 2px 0 rgba(200, 168, 118, 0.08);
 
-    transition: padding 0.45s var(--ease),
-                box-shadow 0.45s var(--ease);
+    transition: padding 0.4s var(--ease),
+                background 0.4s var(--ease),
+                box-shadow 0.4s var(--ease);
   }
 
   .site-header.is-scrolled {
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    background: rgba(242, 239, 233, 0.96);
     box-shadow:
-      0 1px 0 rgba(200, 168, 118, 0.30),
-      0 14px 36px -16px rgba(0, 0, 0, 0.8);
+      0 1px 0 rgba(200, 168, 118, 0.40),
+      0 2px 0 rgba(200, 168, 118, 0.10),
+      0 12px 24px -16px rgba(26, 24, 21, 0.18);
   }
 
-  /* Suptilna texture noise unutar headera za dubinu */
-  .site-header::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.18;
-    background-image: radial-gradient(rgba(242,239,233,0.10) 1px, transparent 1px);
-    background-size: 3px 3px;
-    mix-blend-mode: soft-light;
-    z-index: 0;
-  }
-
-  /* Header inner — vertikalan stack */
+  /* Header inner — JEDAN RED: logo levo, hamburger desno */
   .site-header__inner {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 0.85rem;
+    justify-content: space-between;
+    gap: 1rem;
     grid-template-columns: none;
     position: relative;
-    z-index: 1;
   }
 
   /* -----------------------------------------------------------------
-     LOGO — krupniji, dominira kao potpis
+     LOGO — diskretan potpis levo, 56px
      ----------------------------------------------------------------- */
   .site-header .brand {
-    height: 92px;
-    justify-self: center;
-    align-self: center;
-    order: 1;
-    position: relative;
-    padding: 4px 0;
+    height: 56px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
   }
 
-  /* Zlatne hairline akcent crtice levo i desno od logoa */
-  .site-header .brand::before,
-  .site-header .brand::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 28px;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(200, 168, 118, 0.55),
-      rgba(200, 168, 118, 0.05)
-    );
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-  .site-header .brand::before {
-    right: calc(100% + 14px);
-    background: linear-gradient(
-      90deg,
-      rgba(200, 168, 118, 0.05),
-      rgba(200, 168, 118, 0.55),
-      transparent
-    );
-  }
-  .site-header .brand::after {
-    left: calc(100% + 14px);
-  }
-
-  .site-header .brand__logo,
-  .site-header .brand__logo img,
-  .site-header .brand__logo svg {
-    height: 92px !important;
-    max-height: 92px !important;
-    width: auto !important;
-    transform: none !important;
-    /* invertujemo tamni logo da postane svetao na crnoj pozadini,
-       sa malo zlatnog tona kroz hue-rotate */
-    filter: invert(1) brightness(1.08) contrast(1.05);
-  }
-
-  .site-header.is-scrolled .brand,
-  .site-header.is-scrolled .brand__logo,
-  .site-header.is-scrolled .brand__logo img,
-  .site-header.is-scrolled .brand__logo svg {
-    height: 72px !important;
-    max-height: 72px !important;
-  }
-
+.site-header .brand__logo,
+.site-header .brand__logo img,
+.site-header .brand__logo svg {
+  height: 56px !important;
+  max-height: 56px !important;
+  width: auto !important;
+  transform: scale(2.2) !important;        /* ← scale 1.6 ili 1.8 ili 2.0 */
+  transform-origin: left center !important;
+  filter: none;
+}
+.site-header.is-scrolled .brand,
+.site-header.is-scrolled .brand__logo,
+.site-header.is-scrolled .brand__logo img,
+.site-header.is-scrolled .brand__logo svg {
+  height: 48px !important;
+  max-height: 48px !important;
+  transform: scale(1.8) !important;
+  transform-origin: left center !important;
+}
   /* Sakrivamo desktop nav i status — sve ide u overlay */
   .site-header .nav,
   .site-header .status {
@@ -3295,34 +3252,28 @@ body.is-ready .premium-build {
   }
 
   /* -----------------------------------------------------------------
-     HAMBURGER — zlatni prsten, samo ikonica
+     HAMBURGER — zlatni prsten, desno u istom redu kao logo
      ----------------------------------------------------------------- */
   .mnav-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    order: 2;
-    align-self: center;
+    flex-shrink: 0;
 
     position: relative;
-    width: 46px;
-    height: 46px;
+    width: 42px;
+    height: 42px;
     padding: 0;
-    border: 1px solid rgba(200, 168, 118, 0.55);
+    border: 1px solid rgba(200, 168, 118, 0.5);
     border-radius: 999px;
     background: transparent;
-    color: var(--ink-inv);
+    color: var(--ink);
     cursor: pointer;
     z-index: 102;
 
-    /* suptilan unutrasnji prsten + glow */
-    box-shadow:
-      inset 0 0 0 4px rgba(200, 168, 118, 0.0),
-      0 0 0 0 rgba(200, 168, 118, 0.0);
-
     transition: border-color 0.4s var(--ease),
                 background 0.4s var(--ease),
-                box-shadow 0.45s var(--ease),
+                box-shadow 0.4s var(--ease),
                 transform 0.4s var(--ease);
   }
 
@@ -3330,9 +3281,7 @@ body.is-ready .premium-build {
   .mnav-toggle:focus-visible {
     border-color: var(--accent);
     background: rgba(200, 168, 118, 0.06);
-    box-shadow:
-      inset 0 0 0 4px rgba(200, 168, 118, 0.0),
-      0 0 0 4px rgba(200, 168, 118, 0.10);
+    box-shadow: 0 0 0 4px rgba(200, 168, 118, 0.10);
   }
 
   .mnav-toggle:focus-visible {
@@ -3340,23 +3289,22 @@ body.is-ready .premium-build {
   }
 
   .mnav-toggle:active {
-    transform: scale(0.96);
+    transform: scale(0.94);
   }
 
-  /* Tri linije */
+  /* Tri tanke linije */
   .mnav-toggle__icon {
     position: relative;
-    width: 18px;
-    height: 11px;
+    width: 16px;
+    height: 10px;
     flex-shrink: 0;
   }
 
   .mnav-toggle__icon span {
     position: absolute;
     left: 0;
-    width: 100%;
     height: 1px;
-    background: var(--accent);
+    background: var(--ink);
     transition: transform 0.45s var(--ease),
                 opacity 0.3s var(--ease),
                 top 0.4s var(--ease) 0.05s,
@@ -3364,11 +3312,14 @@ body.is-ready .premium-build {
                 background var(--t-fast) var(--ease);
   }
 
-  .mnav-toggle__icon span:nth-child(1) { top: 1px; width: 100%; }
-  .mnav-toggle__icon span:nth-child(2) { top: 50%; transform: translateY(-50%); width: 65%; }
+  .mnav-toggle__icon span:nth-child(1) { top: 1px;  width: 100%; }
+  .mnav-toggle__icon span:nth-child(2) { top: 50%;  transform: translateY(-50%); width: 65%; }
   .mnav-toggle__icon span:nth-child(3) { top: calc(100% - 1px); width: 80%; }
 
-  /* Hover — sve linije postaju iste duzine, kao "spreman" state */
+  /* Hover — sve linije pune duzine */
+  .mnav-toggle:hover .mnav-toggle__icon span {
+    background: var(--accent);
+  }
   .mnav-toggle:hover .mnav-toggle__icon span:nth-child(2),
   .mnav-toggle:hover .mnav-toggle__icon span:nth-child(3) {
     width: 100%;
@@ -3377,19 +3328,16 @@ body.is-ready .premium-build {
   /* OPEN STATE — X */
   .mnav-toggle[aria-expanded="true"] {
     border-color: var(--accent);
-    background: rgba(200, 168, 118, 0.10);
-    box-shadow:
-      inset 0 0 0 4px rgba(200, 168, 118, 0.0),
-      0 0 0 6px rgba(200, 168, 118, 0.08);
+    background: var(--accent);
+    box-shadow: 0 0 0 5px rgba(200, 168, 118, 0.12);
   }
-
   .mnav-toggle[aria-expanded="true"] .mnav-toggle__icon span {
+    background: var(--bg);
     transition: transform 0.5s var(--ease) 0.1s,
                 opacity 0.2s var(--ease),
                 top 0.4s var(--ease),
                 width 0.3s var(--ease);
   }
-
   .mnav-toggle[aria-expanded="true"] .mnav-toggle__icon span:nth-child(1) {
     top: 50%;
     width: 100%;
@@ -3405,12 +3353,12 @@ body.is-ready .premium-build {
     transform: translateY(-50%) rotate(-45deg);
   }
 
-  /* Sakrivamo tekst label u v2 (samo ikona) */
+  /* Skrivamo tekst label u v3 (samo ikona) */
   .mnav-toggle__label {
     display: none;
   }
 
-  /* Visually hidden tekst za screen readere — pristupacnost */
+  /* Visually hidden tekst za screen readere */
   .mnav-toggle::after {
     content: "Menu";
     position: absolute;
@@ -3422,6 +3370,15 @@ body.is-ready .premium-build {
   }
   .mnav-toggle[aria-expanded="true"]::after {
     content: "Close";
+  }
+
+  /* -----------------------------------------------------------------
+     HERO — taman dovoljno padding-a iznad da header ne secka naslov
+     Realna visina headera je ~80px (56 logo + 2x 0.85rem padding),
+     plus mali "breathing room" pre kickere/H1.
+     ----------------------------------------------------------------- */
+  .hero {
+    padding-top: 7rem;
   }
 
   /* -----------------------------------------------------------------
@@ -3465,11 +3422,10 @@ body.is-ready .premium-build {
     mix-blend-mode: soft-light;
   }
 
-  /* Zlatna hairline pri vrhu overlay-a, ispod headera */
   .mnav-overlay::after {
     content: "";
     position: absolute;
-    top: 116px;
+    top: 96px;
     left: 8%;
     right: 8%;
     height: 1px;
@@ -3492,7 +3448,7 @@ body.is-ready .premium-build {
     z-index: 1;
     height: 100%;
     width: 100%;
-    padding: 9.5rem var(--gutter) 3rem;
+    padding: 7.5rem var(--gutter) 3rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -3561,7 +3517,6 @@ body.is-ready .premium-build {
     opacity: 1;
     transform: translateY(0);
   }
-
   .mnav-overlay[data-open="true"] .mnav-overlay__item:nth-child(1) .mnav-overlay__link { transition-delay: 0.30s, 0.30s, 0s, 0s; }
   .mnav-overlay[data-open="true"] .mnav-overlay__item:nth-child(2) .mnav-overlay__link { transition-delay: 0.40s, 0.40s, 0s, 0s; }
   .mnav-overlay[data-open="true"] .mnav-overlay__item:nth-child(3) .mnav-overlay__link { transition-delay: 0.50s, 0.50s, 0s, 0s; }
@@ -3741,14 +3696,6 @@ body.is-ready .premium-build {
     touch-action: none;
   }
 
-  /* Hero ne sme da bude prekriven tamnim headerom — dodaj malo padding-a
-     samo ako trenutni padding-top hero-a nije dovoljan.
-     Trenutni hero ima padding-top: 8rem na mobilnom — sa headerom od ~125px
-     to je dovoljno, ali za svaki slucaj garantujemo minimum: */
-  .hero {
-    padding-top: max(8.5rem, calc(140px + 1.5rem));
-  }
-
 } /* end @media (max-width: 768px) */
 
 /* -----------------------------------------------------------------
@@ -3763,5 +3710,582 @@ body.is-ready .premium-build {
   .site-header * {
     transition-duration: 0.001ms !important;
     animation-duration: 0.001ms !important;
+  }
+}
+/* =====================================================================
+   19.1 MOBILE HEADER — OVERFLOW FIX (≤ 768px)
+   ---------------------------------------------------------------------
+   Patch dodati ODMAH POSLE sekcije 19 (mobile-header-v3.css) u style.css.
+   Resava:
+     1. Hamburger ispada/ide preblizu desne ivice ekrana
+     2. Brojevi 01-04 u overlay meniju su prilepljeni za desnu ivicu
+   Strategija: garantovan unutrasnji safe-zone padding sa obe strane.
+   ===================================================================== */
+
+@media (max-width: 768px) {
+
+  /* -----------------------------------------------------------------
+     HEADER — siguran horizontalni padding + safe-area inset
+     ----------------------------------------------------------------- */
+  .site-header {
+    /* Dodajemo 0.25rem ekstra desno + safe-area podrsku za notch telefone */
+    padding-left:  calc(var(--gutter) + env(safe-area-inset-left, 0px));
+    padding-right: calc(var(--gutter) + env(safe-area-inset-right, 0px));
+  }
+
+  /* Hamburger se odmice od ivice za jos malo — i postaje vizuelno
+     "uvuceniji", manje deluje da pliva po ivici */
+  .site-header__inner {
+    padding-right: 2px; /* mikro-buffer za zlatni outline da ne nasleda na ivicu */
+  }
+
+  /* Brand levo dobija isti tretman radi simetrije — opciono mikro pomak */
+  .site-header .brand {
+    margin-left: 2px;
+  }
+
+  /* -----------------------------------------------------------------
+     OVERLAY — siguran horizontalni padding sa obe strane
+     ----------------------------------------------------------------- */
+  .mnav-overlay__inner {
+    padding-left:  calc(var(--gutter) + env(safe-area-inset-left, 0px));
+    padding-right: calc(var(--gutter) + env(safe-area-inset-right, 0px));
+  }
+
+  /* -----------------------------------------------------------------
+     LINK U OVERLAY-U — desni padding tako da broj nije prilepljen
+     za ivicu link-area, plus link sam ne secka brojeve.
+     ----------------------------------------------------------------- */
+  .mnav-overlay__link {
+    /* Originalno: padding: 1.15rem 0.25rem 1.15rem 0;
+       Sada: 1.15rem 0.5rem 1.15rem 0;  -> broj odmaknut od ivice link-a */
+    padding-right: 0.5rem;
+  }
+
+  /* Brojevi 01-04 — dodatna sigurnosna margina desno */
+  .mnav-overlay__num {
+    margin-right: 0.15rem;
+    /* Ako je broj duzi od 2 cifre, ne sme da se cepa */
+    white-space: nowrap;
+  }
+
+  /* -----------------------------------------------------------------
+     OVERLAY HAIRLINE — uskladiti sa novim safe-area padding-om
+     da ne ispadne sa ekrana
+     ----------------------------------------------------------------- */
+  .mnav-overlay::after {
+    /* Bilo: left: 8%; right: 8%;
+       Cuvamo proporcije ali garantujemo minimum margine */
+    left: max(8%, calc(var(--gutter) + env(safe-area-inset-left, 0px)));
+    right: max(8%, calc(var(--gutter) + env(safe-area-inset-right, 0px)));
+  }
+
+  /* -----------------------------------------------------------------
+     CORNER DECORATIONS — pomeri ih unutra da ne sede na safe-area
+     ----------------------------------------------------------------- */
+  .mnav-overlay__corner--tl {
+    top:  max(1.1rem, env(safe-area-inset-top, 1.1rem));
+    left: max(1.1rem, env(safe-area-inset-left, 1.1rem));
+  }
+  .mnav-overlay__corner--br {
+    bottom: max(1.1rem, env(safe-area-inset-bottom, 1.1rem));
+    right:  max(1.1rem, env(safe-area-inset-right, 1.1rem));
+  }
+
+  /* -----------------------------------------------------------------
+     SOCIAL LINKOVI U FOOTERU OVERLAY-A — wrap pravilno na uske ekrane
+     ----------------------------------------------------------------- */
+  .mnav-overlay__social {
+    padding-right: 0.25rem;
+  }
+
+  /* -----------------------------------------------------------------
+     OPSTI HORIZONTALNI OVERFLOW GUARD — globalno za mobile
+     ----------------------------------------------------------------- */
+  html, body {
+    overflow-x: hidden;
+  }
+}
+/* =====================================================================
+   20. PRELOADER — MOBILE OPTIMIZATION (≤ 768px)
+   ---------------------------------------------------------------------
+   Dodaje se na KRAJ style.css.
+   - NE dira desktop verziju (sve striktno unutar @media (max-width: 768px))
+   - Cilj: bolje proporcije, krupniji vidljiv logo, lighter GPU load,
+     glatka 60fps animacija na sredjim Android telefonima
+   ===================================================================== */
+
+@media (max-width: 768px) {
+
+  /* -----------------------------------------------------------------
+     LOADER ROOT — kompaktniji frame, manje skupih efekata
+     ----------------------------------------------------------------- */
+  .loader {
+    /* Lakša radial pozadina — manji centar svetla, manje kompozicija */
+    background:
+      radial-gradient(circle at 50% 38%, rgba(200,168,118,.13), transparent 38%),
+      linear-gradient(140deg, #0E0D0B 0%, #17130F 50%, #0A0908 100%);
+  }
+
+  /* Frame inset smanjen + safe-area podrska za telefone sa notch-om */
+  .loader::before {
+    inset: max(3vw, env(safe-area-inset-top, 12px))
+           max(3vw, env(safe-area-inset-right, 12px))
+           max(3vw, env(safe-area-inset-bottom, 12px))
+           max(3vw, env(safe-area-inset-left, 12px));
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.04),
+      0 0 50px rgba(0,0,0,.28);
+  }
+
+  .loader::after {
+    inset: auto 5vw 5vw 5vw;
+  }
+
+  /* -----------------------------------------------------------------
+     NOISE — manja gustina na mobilnom (manji repaint)
+     ----------------------------------------------------------------- */
+  .loader__noise {
+    opacity: .15;
+    background-size: 4px 4px; /* sa 3px na 4px = manje piksela za render */
+  }
+
+  /* -----------------------------------------------------------------
+     GLOW SLOJEVI — drasticno manji blur, manji size
+     Razlog: 70px blur na mobilnom GPU je glavni krivac za stutter
+     ----------------------------------------------------------------- */
+  .loader__glow {
+    width: 60vw;
+    height: 60vw;
+    min-width: 280px;
+    min-height: 280px;
+    filter: blur(40px);
+    opacity: .35;
+  }
+
+  .loader__glow--one {
+    left: -20vw;
+    top: -25vw;
+  }
+
+  .loader__glow--two {
+    right: -22vw;
+    bottom: -28vw;
+  }
+
+  /* Ublazi keyframe path da bude manji translate (ne nateze GPU) */
+  @keyframes loaderGlowOne {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(3vw, 2vw, 0) scale(1.06); }
+  }
+  @keyframes loaderGlowTwo {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(-3vw, -2vw, 0) scale(1.04); }
+  }
+
+  /* -----------------------------------------------------------------
+     FRAME — tighter, manje praznog vazduha
+     ----------------------------------------------------------------- */
+  .loader__frame {
+    width: min(420px, calc(100vw - 32px));
+    gap: 1.35rem;
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* -----------------------------------------------------------------
+     LOGO — skaliran transform-om da bude vizuelno krupniji
+     bez menjanja box-a (isti princip kao u header-u)
+     ----------------------------------------------------------------- */
+  .loader__mark {
+    width: min(360px, 78vw);
+    padding: 0.85rem 1rem;
+  }
+
+  .loader__mark::before,
+  .loader__mark::after {
+    width: 50%; /* malo siroke hairline crtice na mobilnom */
+  }
+
+.loader__mark img {
+  transform: translate(-2%, 12px) scale(1.45);
+  transform-origin: center center;
+  animation: loaderLogoRevealMobile .95s var(--ease) .28s forwards;
+  will-change: transform;
+}
+  /* Mobile-specific keyframe — zavrsava na scale(1.45), ne 1 */
+@keyframes loaderLogoRevealMobile {
+  to {
+    transform: translate(-2%, 0) scale(1.45);
+  }
+}
+  /* -----------------------------------------------------------------
+     META — tri stavke u jednom redu, tanji separatori, manji font
+     Pad na 2 reda (wrap) ako je viewport jako uzak
+     ----------------------------------------------------------------- */
+  .loader__meta {
+    gap: .55rem;
+    font-size: .58rem;
+    letter-spacing: .20em;
+    color: rgba(242,239,233,.55);
+    /* Sigurnosno: maksimalno 90% sirine frame-a */
+    max-width: 90%;
+  }
+
+  .loader__meta span {
+    gap: .55rem;
+  }
+
+  .loader__meta span:not(:last-child)::after {
+    width: 3px;
+    height: 3px;
+  }
+
+  /* -----------------------------------------------------------------
+     BAR — uza, kompaktnija
+     ----------------------------------------------------------------- */
+  .loader__bar {
+    width: min(280px, 70vw);
+    height: 1.5px;
+  }
+
+  /* Sheen animacija ostaje, ali malo brza i suptilnija */
+  .loader__bar::before {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.13), transparent);
+    animation-duration: 1.6s;
+  }
+
+  /* -----------------------------------------------------------------
+     FOOTER — manji font, bolje balansiran
+     ----------------------------------------------------------------- */
+  .loader__footer {
+    width: min(280px, 70vw);
+    font-size: .58rem;
+    letter-spacing: .16em;
+    color: rgba(242,239,233,.42);
+    gap: .75rem;
+  }
+
+  /* -----------------------------------------------------------------
+     EXIT ANIMACIJA — brza za mobile (tap to start situacije)
+     ----------------------------------------------------------------- */
+  .loader.is-done {
+    transition:
+      transform .9s cubic-bezier(.86, 0, .07, 1),
+      opacity .55s ease;
+  }
+
+} /* end @media (max-width: 768px) */
+
+
+/* =====================================================================
+   ULTRA-USKI EKRANI (≤ 380px) — npr. iPhone SE, stari Android
+   Jos kompaktnija varijanta da nista ne ispada van.
+   ===================================================================== */
+@media (max-width: 380px) {
+
+  .loader__frame {
+    gap: 1.1rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .loader__mark {
+    width: 82vw;
+    padding: 0.7rem 0.85rem;
+  }
+
+@media (max-width: 380px) {
+  .loader__mark img,
+  .loader__mark .mock-logo {
+    transform: translate(-2%, 10px) scale(1.30);
+  }
+  @keyframes loaderLogoRevealMobile {
+    to { transform: translate(-2%, 0) scale(1.30); }
+  }
+}
+  .loader__meta {
+    font-size: .54rem;
+    letter-spacing: .18em;
+  }
+
+  .loader__bar,
+  .loader__footer {
+    width: 75vw;
+  }
+}
+
+
+/* =====================================================================
+   PREFERS-REDUCED-MOTION — preloader praktično bez animacija
+   ===================================================================== */
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .loader__glow,
+  .loader__bar::before {
+    animation: none !important;
+  }
+  .loader__mark img {
+    transform: scale(1.45) !important;
+    animation: none !important;
+  }
+}
+
+@media (max-width: 380px) and (prefers-reduced-motion: reduce) {
+  .loader__mark img {
+    transform: scale(1.30) !important;
+  }
+}
+/* =====================================================================
+   21. MOBILE CLEANUP — HERO SHOWCASE + MARQUEE OFF (≤ 768px)
+   ---------------------------------------------------------------------
+   Dodaje se na KRAJ style.css (posle preloader patch-a).
+   - Skriva animirani hero showcase (premium-build mockup)
+   - Skriva marquee strip ispod hero-a (dva animirana reda teksta)
+   - Primice .about sekciju da popuni izgubljen vertikalni prostor
+   - Sve striktno unutar @media (max-width: 768px)
+   - Desktop ostaje 1:1 netaknut
+   ===================================================================== */
+
+@media (max-width: 768px) {
+
+  /* -----------------------------------------------------------------
+     HERO SHOWCASE — uklanjamo ceo desni vizual (premium build mockup)
+     ----------------------------------------------------------------- */
+  .hero__showcase {
+    display: none !important;
+  }
+
+  /* Hero inner sad ima samo copy kolonu — ukloni gap koji vise nema svrhu */
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-bottom: 2rem;
+  }
+
+  /* Hero sam dobija manji bottom padding, jer marquee koji je ispod ne postoji vise */
+  .hero {
+    padding-bottom: 1.5rem;
+  }
+
+  /* -----------------------------------------------------------------
+     MARQUEE — uklanjamo oba reda animiranog teksta ispod hero-a
+     ----------------------------------------------------------------- */
+  .marquee {
+    display: none !important;
+  }
+
+  /* -----------------------------------------------------------------
+     ABOUT — sad pocinje "ranije" da kompenzuje uklonjene elemente.
+     Originalna mobilna vrednost je padding: 5rem var(--gutter); 
+     -> smanjujemo gornji padding da about pocne primakniji hero-u.
+     ----------------------------------------------------------------- */
+  .about {
+    padding-top: 2.5rem;
+  }
+
+  /* Hero strip (donji service strip Web Design — UI/UX — itd.) ostaje ako
+     ga ne smatras animacijom. Ako i njega zelis da uklonis, otkomentarisi: */
+  /*
+  .hero__strip {
+    display: none !important;
+  }
+  */
+
+} /* end @media (max-width: 768px) */
+/* =====================================================================
+   22. ABOUT PORTRAIT CAPTION — MOBILE SHRINK (≤ 768px)
+   ---------------------------------------------------------------------
+   Dodaje se na KRAJ style.css.
+   - Smanjuje "Fig. 01 / Aleksandar Aničić / Belgrade · Čukarica · 2026"
+     kvadrat ispod portreta SAMO na mobilnom.
+   - Desktop verzija ostaje 100% netaknuta (sve unutar @media ≤ 768px).
+   ===================================================================== */
+
+@media (max-width: 768px) {
+
+  .about-portrait__caption {
+    /* Originalno mobile: padding nasleđen sa desktopa (1.6rem 1.8rem).
+       Sada manji za otprilike 25% — kvadrat deluje kompaktnije. */
+    padding: 1.2rem 1.35rem;
+
+    /* Sirina sa 80% na 70% — vise vazduha oko kartice */
+    max-width: 70%;
+
+    /* Manji top razmak (bilo -2.5rem) — caption lepo "lebdi" iznad portreta */
+    margin-top: 2rem;
+
+    /* Suptilno blizi portretu sa leve strane */
+    margin-left: 25%;
+
+    /* Manji unutarnji gap medju linijama */
+    gap: 0.3rem;
+  }
+
+  /* Unutarnji zlatni inset border — manje uvucen jer je sam kvadrat manji */
+  .about-portrait__caption::before {
+    inset: 6px;
+  }
+
+  /* "Fig. 01" — manji font, malo manji padding ispod hairline */
+  .about-portrait__caption-num {
+    font-size: 0.56rem;
+    letter-spacing: 0.20em;
+    padding-bottom: 0.45rem;
+  }
+
+  /* "Aleksandar Aničić" — sa 1.4rem na 1.2rem */
+  .about-portrait__caption-name {
+    font-size: 1.2rem;
+    padding-top: 0.3rem;
+  }
+
+  /* "Belgrade · Čukarica · 2026" — sa 0.62rem na 0.56rem */
+  .about-portrait__caption-meta {
+    font-size: 0.56rem;
+    letter-spacing: 0.16em;
+    padding-top: 0.2rem;
+  }
+
+} /* end @media (max-width: 768px) */
+
+
+/* =====================================================================
+   ULTRA-USKI EKRANI (≤ 380px) — jos malo kompaktnije
+   ===================================================================== */
+@media (max-width: 380px) {
+
+  .about-portrait__caption {
+    padding: 1rem 1.15rem;
+    max-width: 75%;
+    margin-left: 20%;
+  }
+
+  .about-portrait__caption-name {
+    font-size: 1.1rem;
+  }
+
+  .about-portrait__caption-num,
+  .about-portrait__caption-meta {
+    font-size: 0.52rem;
+    letter-spacing: 0.18em;
+  }
+}
+/* =====================================================================
+   23. ABOUT PORTRAIT — CENTER ON MOBILE (≤ 768px)
+   ---------------------------------------------------------------------
+   Dodaje se na KRAJ style.css (posle caption shrink patcha).
+   - Centrira sliku portreta po sredini ekrana sa frame outline-om.
+   - Pomera caption ispod centriranog portreta umesto na stranu.
+   - Desktop ostaje 100% netaknut.
+   ===================================================================== */
+
+@media (max-width: 768px) {
+
+  /* -----------------------------------------------------------------
+     Sekcija — uklanjamo gornji decorative border ako visi pretesno
+     ----------------------------------------------------------------- */
+  .about-portrait {
+    padding: 3rem 0 4rem;
+    /* Centriramo sve unutra */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Hairline crtica iznad — centriramo je takodje */
+  .about-portrait::before {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35%;
+  }
+
+  /* -----------------------------------------------------------------
+     STAGE — centriran po sredini ekrana
+     ----------------------------------------------------------------- */
+  .about-portrait__stage {
+    width: 85%;
+    max-width: 480px;
+    margin: 0 auto;       /* <<-- KLJUC: centriranje */
+    position: relative;
+  }
+
+  /* Glow iza slike — centriran iznad/iza stage-a */
+  .about-portrait__glow {
+    top: -8%;
+    left: -10%;
+    width: 120%;
+    height: 116%;
+  }
+
+  /* -----------------------------------------------------------------
+     CAPTION — sada SREDISNJI, ispod centrirane slike
+     (umesto pomerena udesno kao pre)
+     ----------------------------------------------------------------- */
+  .about-portrait__caption {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: -1rem;     /* lebdi malo preko donje ivice slike */
+    margin-left: auto;     /* <<-- KLJUC: centriranje */
+    margin-right: auto;
+    padding: 1.2rem 1.35rem;
+    max-width: 78%;
+    width: auto;
+    gap: 0.3rem;
+
+    /* align center sadrzaja unutar kvadrata */
+    text-align: center;
+    align-items: center;
+  }
+
+  /* Hairline ispod "Fig. 01" — centrirana */
+  .about-portrait__caption-num {
+    font-size: 0.56rem;
+    letter-spacing: 0.20em;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid var(--rule);
+    /* Da bude centrirana hairline ispod (jer je ceo blok flex column) */
+    align-self: stretch;
+  }
+
+  .about-portrait__caption-name {
+    font-size: 1.2rem;
+    padding-top: 0.3rem;
+  }
+
+  .about-portrait__caption-meta {
+    font-size: 0.56rem;
+    letter-spacing: 0.16em;
+    padding-top: 0.2rem;
+  }
+
+  /* Inset zlatni border — proporcionalno smanjen */
+  .about-portrait__caption::before {
+    inset: 6px;
+  }
+
+} /* end @media (max-width: 768px) */
+
+
+/* =====================================================================
+   ULTRA-USKI EKRANI (≤ 380px)
+   ===================================================================== */
+@media (max-width: 380px) {
+
+  .about-portrait__stage {
+    width: 88%;
+  }
+
+  .about-portrait__caption {
+    padding: 1rem 1.15rem;
+    max-width: 84%;
+  }
+
+  .about-portrait__caption-name {
+    font-size: 1.1rem;
+  }
+
+  .about-portrait__caption-num,
+  .about-portrait__caption-meta {
+    font-size: 0.52rem;
+    letter-spacing: 0.18em;
   }
 }
