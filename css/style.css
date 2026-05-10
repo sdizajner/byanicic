@@ -4345,3 +4345,13 @@ body.is-ready .premium-build {
     display: none !important;
   }
 }
+/* ============================================================
+   MOBILE PERFORMANCE — SYSTEM FONT STACK
+   Desktop remains unchanged.
+   ============================================================ */
+@media (max-width: 768px) {
+  :root {
+    --f-display: Georgia, "Times New Roman", serif;
+    --f-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+}
