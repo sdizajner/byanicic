@@ -3378,7 +3378,7 @@ body.is-ready .premium-build {
      plus mali "breathing room" pre kickere/H1.
      ----------------------------------------------------------------- */
   .hero {
-    padding-top: 7rem;
+    padding-top: 9rem;
   }
 
   /* -----------------------------------------------------------------
@@ -4287,5 +4287,47 @@ body.is-ready .premium-build {
   .about-portrait__caption-meta {
     font-size: 0.52rem;
     letter-spacing: 0.18em;
+  }
+}
+/* =====================================================================
+   24. PRELOADER OFF — MOBILE ONLY (≤ 768px)
+   ---------------------------------------------------------------------
+   Dodaje se na KRAJ style.css.
+   - Skriva preloader u potpunosti samo na mobilnoj verziji.
+   - Desktop verzija ostaje 100% netaknuta.
+   ===================================================================== */
+
+@media (max-width: 768px) {
+  .loader {
+    display: none !important;
+  }
+}
+/* =====================================================================
+   25. STATS REMOVED — TIGHTEN WORK SECTION SPACING
+   ---------------------------------------------------------------------
+   Pošto je .stats blok obrisan iz HTML-a, .about više nema 8rem dno
+   margine od stats-a, pa .work koja sledi može biti bliža.
+   Ova sekcija primice .work i na desktopu i na mobilnom.
+   ===================================================================== */
+
+/* Desktop — .about ima default padding-bottom 8rem (kroz padding sekcije).
+   Sad smanjujemo bottom padding da work pocne ranije. */
+.about {
+  padding-bottom: 4rem;
+}
+
+/* .work je default padding: 6rem var(--gutter) 8rem; — top je 6rem.
+   Smanjujemo top na 3rem za jos blizi prelaz. */
+.work {
+  padding-top: 3rem;
+}
+
+/* Mobilna verzija — jos kompaktnija, jer mobile ima svoje override-ove */
+@media (max-width: 768px) {
+  .about {
+    padding-bottom: 2.5rem;
+  }
+  .work {
+    padding-top: 2rem;
   }
 }

@@ -11,18 +11,26 @@
 
   /* ---------------------------------------------------------------
      1. PAGE LOADER — premium counter + progress bar
+        (Skip na mobilnom — preloader off za uske ekrane)
      --------------------------------------------------------------- */
   const loader         = document.getElementById('loader');
   const loaderCount    = document.getElementById('loaderCount');
   const loaderProgress = document.getElementById('loaderProgress');
 
-  if (loader && !prefersReducedMotion) {
-    // Glatko punjenje 0 → 100 za 1.5s (kao GSAP power2.inOut)
+  // Mobile detection — ista granica kao @media (max-width: 768px)
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+  if (isMobile) {
+    // Na mobilnom uopste ne pokrecemo preloader animaciju —
+    // odmah skidamo loader iz DOM-a i aktiviramo hero stanje.
+    if (loader) loader.remove();
+    document.body.classList.add('is-ready');
+  } else if (loader && !prefersReducedMotion) {
+    // Desktop sa animacijama — originalna premium animacija ostaje.
     const duration = 2600;
     const exitDelay = 450;
     const startTime = performance.now();
 
-    // power2.inOut ease - sporo start, brzo sredina, sporo kraj
     const ease = (t) => t < 0.5
       ? 2 * t * t
       : 1 - Math.pow(-2 * t + 2, 2) / 2;
@@ -43,7 +51,6 @@
       if (t < 1) {
         requestAnimationFrame(tick);
       } else {
-        // Punjenje zavrseno - kratak delay pa exit
         setTimeout(() => {
           loader.classList.add('is-done');
           document.body.classList.add('is-ready');
@@ -402,12 +409,6 @@
       document.body.classList.add('is-ready');
     }
   }, 4000);
-/* =====================================================================
-   MOBILE NAV — TOGGLE HANDLER
-   ---------------------------------------------------------------------
-   Dodaje se na KRAJ js/main.js, ODMAH PRE poslednje zatvarajuce
-   })(); strele (tj. pre kraja IIFE-a).
-   ===================================================================== */
 
   /* ---------------------------------------------------------------
      10. MOBILE NAV OVERLAY
@@ -469,4 +470,5 @@
       mqDesktop.addListener(onMqChange);
     }
   }
+
 })();
