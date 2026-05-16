@@ -4722,3 +4722,116 @@ body.mnav-open .language-float {
     display: none;
   }
 }
+/* =====================================================================
+   28. MOBILE NAV — KOMPAKTNA VARIJANTA (sve staje na ekran)
+   ===================================================================== */
+@media (max-width: 768px) {
+
+  /* Manji gornji padding overlay-a da vise prostora za sadrzaj */
+  .mnav-overlay__inner {
+    padding-top: 6rem;
+    padding-bottom: 2rem;
+    gap: 1.25rem;
+  }
+
+  /* Manji "— Navigation" / "— Navigacija" label */
+  .mnav-overlay__label {
+    font-size: 0.58rem;
+  }
+
+  /* GLAVNI LINKOVI — manji font (sa ~clamp 2.2-3.4rem na ~1.7-2.4rem) */
+  .mnav-overlay__link {
+    font-size: clamp(1.7rem, 7vw, 2.4rem) !important;
+    padding: 0.78rem 0.25rem 0.78rem 0 !important;
+  }
+
+  .mnav-overlay__num {
+    font-size: 0.56rem;
+  }
+
+  /* FOOTER OVERLAY-A — kompaktnije */
+  .mnav-overlay__foot {
+    gap: 1rem;
+    padding-top: 1.1rem;
+  }
+
+  /* LANGUAGE blok u meniju — kompaktnije */
+  .mnav-overlay__lang {
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .mnav-overlay__lang-label {
+    font-size: 0.56rem;
+  }
+
+  .mnav-overlay__lang-item {
+    min-width: 36px;
+    height: 26px;
+    padding: 0 12px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+
+  .mnav-overlay__lang-options {
+    padding: 0.4rem 0.55rem;
+  }
+
+  /* KONTAKT — kompaktnije */
+  .mnav-overlay__contact {
+    gap: 0.3rem;
+  }
+
+  .mnav-overlay__email {
+    font-size: 1.05rem;
+  }
+
+  .mnav-overlay__phone {
+    font-size: 0.7rem;
+  }
+
+  /* STATUS "Available for work · Belgrade" — manji */
+  .mnav-overlay__status {
+    font-size: 0.55rem;
+  }
+
+  .mnav-overlay__status i {
+    width: 5px;
+    height: 5px;
+  }
+
+  /* SOCIAL LINKOVI — manji */
+  .mnav-overlay__social {
+    gap: 0.9rem;
+    padding-top: 0.5rem;
+  }
+
+  .mnav-overlay__social a {
+    font-size: 0.56rem;
+    letter-spacing: 0.18em;
+  }
+}
+
+/* Ultra-uski ekrani (≤ 380px) — još kompaktnije */
+@media (max-width: 380px) {
+  .mnav-overlay__inner {
+    padding-top: 5.5rem;
+    gap: 1rem;
+  }
+
+  .mnav-overlay__link {
+    font-size: clamp(1.45rem, 7.5vw, 2rem) !important;
+    padding: 0.65rem 0.25rem 0.65rem 0 !important;
+  }
+
+  .mnav-overlay__email {
+    font-size: 0.95rem;
+  }
+
+  .mnav-overlay__lang-item {
+    min-width: 34px;
+    height: 24px;
+    padding: 0 10px;
+    font-size: 9.5px;
+  }
+}
