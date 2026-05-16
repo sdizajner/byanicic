@@ -4835,3 +4835,8 @@ body.mnav-open .language-float {
     font-size: 9.5px;
   }
 }
+@media (min-width: 1025px) {
+  .hero__inner {
+    transform: translateY(-16px) !important;
+  }
+}
