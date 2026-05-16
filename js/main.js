@@ -470,5 +470,66 @@
       mqDesktop.addListener(onMqChange);
     }
   }
+/* LANGUAGE FLOAT — pamcenje izbora jezika */
+  const langFloatLinks = document.querySelectorAll('.language-float__item[data-lang-switch]');
+  if (langFloatLinks.length) {
+    langFloatLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        try {
+          localStorage.setItem('preferredLang', link.dataset.langSwitch);
+        } catch (e) {}
+      });
+    });
 
+    try {
+      const saved = localStorage.getItem('preferredLang');
+      const currentIsSerbian = document.documentElement.lang.startsWith('sr');
+      const justRedirected = sessionStorage.getItem('langRedirected');
+
+      if (saved && !justRedirected) {
+        if (saved === 'sr' && !currentIsSerbian) {
+          sessionStorage.setItem('langRedirected', '1');
+          window.location.replace('sr/index.html');
+        } else if (saved === 'en' && currentIsSerbian) {
+          sessionStorage.setItem('langRedirected', '1');
+          window.location.replace('../index.html');
+        }
+      }
+    } catch (e) {}
+  }
+  /* ---------------------------------------------------------------
+   LANGUAGE SWITCHER — pamcenje izbora jezika
+   Dodaje se unutar postojeceg (() => { ... })(); bloka u main.js,
+   neposredno PRE zatvarajuceg })();
+   Pokriva i floating dugme i hamburger-meni varijantu.
+   --------------------------------------------------------------- */
+  const langLinks = document.querySelectorAll(
+    '.language-float__item[data-lang-switch], .mnav-overlay__lang-item[data-lang-switch]'
+  );
+
+  if (langLinks.length) {
+    langLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        try {
+          localStorage.setItem('preferredLang', link.dataset.langSwitch);
+        } catch (e) {}
+      });
+    });
+
+    try {
+      const saved = localStorage.getItem('preferredLang');
+      const currentIsSerbian = document.documentElement.lang.startsWith('sr');
+      const justRedirected = sessionStorage.getItem('langRedirected');
+
+      if (saved && !justRedirected) {
+        if (saved === 'sr' && !currentIsSerbian) {
+          sessionStorage.setItem('langRedirected', '1');
+          window.location.replace('sr/index.html');
+        } else if (saved === 'en' && currentIsSerbian) {
+          sessionStorage.setItem('langRedirected', '1');
+          window.location.replace('../index.html');
+        }
+      }
+    } catch (e) {}
+  }
 })();

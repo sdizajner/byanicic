@@ -4353,3 +4353,372 @@ body.is-ready .premium-build {
     --f-body: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
 }
+/* =====================================================================
+   26. LANGUAGE FLOAT — premium floating switcher
+   ===================================================================== */
+.language-float {
+  position: fixed !important;
+  top: 50% !important;
+  right: 6px !important;
+  transform: translateY(-50%) !important;
+  z-index: 100 !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 2px !important;
+
+  padding: 4px !important;
+  border: 1px solid rgba(202, 168, 117, 0.38) !important;
+  border-radius: 999px !important;
+
+  background: rgba(255, 255, 255, 0.52) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
+}
+
+.language-float::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.65),
+      rgba(202, 168, 117, 0.18),
+      rgba(255, 255, 255, 0.18)
+    );
+  opacity: 0.55;
+  z-index: -1;
+}
+
+.language-float__item {
+  position: relative !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-width: 38px !important;
+  height: 30px !important;
+  padding: 0 12px !important;
+  border-radius: 999px !important;
+
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+
+  color: rgba(20, 20, 18, 0.58) !important;
+
+  transition:
+    color 240ms ease,
+    background-color 240ms ease,
+    transform 240ms ease,
+    box-shadow 240ms ease !important;
+}
+
+.language-float__item:hover {
+  color: rgba(20, 20, 18, 0.96) !important;
+  background: rgba(202, 168, 117, 0.10) !important;
+}
+
+.language-float__item.is-active,
+.language-float__item[aria-current="true"] {
+  color: #141412 !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(202, 168, 117, 0.30),
+      rgba(255, 255, 255, 0.72)
+    ) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 8px 18px rgba(202, 168, 117, 0.12) !important;
+}
+
+.language-float__item.is-active::after,
+.language-float__item[aria-current="true"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  width: 12px;
+  height: 1px;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 18, 0.45);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .language-float {
+    top: auto !important;
+    right: 18px !important;
+    bottom: 24px !important;
+    transform: none !important;
+    padding: 3px !important;
+    z-index: 120 !important;
+  }
+
+  .language-float__item {
+    min-width: 34px !important;
+    height: 28px !important;
+    padding: 0 10px !important;
+    font-size: 10px !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .language-float__item.is-active::after,
+  .language-float__item[aria-current="true"]::after {
+    bottom: 4px;
+    width: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .language-float {
+    right: 14px !important;
+    bottom: 18px !important;
+  }
+}
+
+/* Sakriva se kad je mobilni meni otvoren — da ne smeta */
+body.mnav-open .language-float {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease !important;
+}
+/* =====================================================================
+   27. LANGUAGE SWITCHER — FINAL
+   ---------------------------------------------------------------------
+   Dodaje se na KRAJ style.css.
+   AKO POSTOJI sekcija 26 ili neka stara .lang-switch / .language-float
+   sekcija — obrisi je celu pre nego sto nalepis ovo.
+   ---
+   Pravila:
+   - DESKTOP (≥769px): floating pill stoji desno (sredina ekrana)
+   - MOBILE (≤768px): floating pill SE NE PRIKAZUJE,
+     a unutar hamburger menija se prikazuje premium varijanta
+   ===================================================================== */
+
+/* ---------- DESKTOP FLOATING SWITCHER ---------- */
+.language-float {
+  position: fixed !important;
+  top: 50% !important;
+  right: 14px !important;
+  transform: translateY(-50%) !important;
+  z-index: 100 !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 2px !important;
+
+  padding: 4px !important;
+  border: 1px solid rgba(202, 168, 117, 0.38) !important;
+  border-radius: 999px !important;
+
+  background: rgba(255, 255, 255, 0.52) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55) !important;
+}
+
+.language-float::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.65),
+      rgba(202, 168, 117, 0.18),
+      rgba(255, 255, 255, 0.18)
+    );
+  opacity: 0.55;
+  z-index: -1;
+}
+
+.language-float__item {
+  position: relative !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  min-width: 38px !important;
+  height: 30px !important;
+  padding: 0 12px !important;
+  border-radius: 999px !important;
+
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+
+  color: rgba(20, 20, 18, 0.58) !important;
+
+  transition:
+    color 240ms ease,
+    background-color 240ms ease,
+    transform 240ms ease,
+    box-shadow 240ms ease !important;
+}
+
+.language-float__item:hover {
+  color: rgba(20, 20, 18, 0.96) !important;
+  background: rgba(202, 168, 117, 0.10) !important;
+}
+
+.language-float__item.is-active,
+.language-float__item[aria-current="true"] {
+  color: #141412 !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(202, 168, 117, 0.30),
+      rgba(255, 255, 255, 0.72)
+    ) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    0 8px 18px rgba(202, 168, 117, 0.12) !important;
+}
+
+.language-float__item.is-active::after,
+.language-float__item[aria-current="true"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  width: 12px;
+  height: 1px;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 18, 0.45);
+}
+
+/* ---------- MOBILE: floating se ne prikazuje ---------- */
+@media (max-width: 768px) {
+  .language-float {
+    display: none !important;
+  }
+}
+
+/* =====================================================================
+   LANGUAGE SWITCHER UNUTAR HAMBURGER MENIJA — samo mobile
+   ===================================================================== */
+@media (max-width: 768px) {
+  .mnav-overlay__lang {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding-bottom: 1.4rem;
+    margin-bottom: 0.2rem;
+    border-bottom: 1px solid rgba(242, 239, 233, 0.10);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s var(--ease) 0.65s,
+                transform 0.7s var(--ease) 0.65s;
+  }
+
+  .mnav-overlay[data-open="true"] .mnav-overlay__lang {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mnav-overlay__lang-label {
+    font-family: var(--f-body);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(242, 239, 233, 0.5);
+  }
+
+  .mnav-overlay__lang-options {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    padding: 0.55rem 0.7rem;
+    align-self: flex-start;
+    border: 1px solid rgba(202, 168, 117, 0.38);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .mnav-overlay__lang-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 28px;
+    padding: 0 14px;
+    border-radius: 999px;
+
+    font-family: var(--f-body);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    color: rgba(242, 239, 233, 0.48);
+    transition: color 0.3s var(--ease),
+                background 0.3s var(--ease);
+  }
+
+  .mnav-overlay__lang-item:hover,
+  .mnav-overlay__lang-item:active {
+    color: var(--ink-inv);
+  }
+
+  .mnav-overlay__lang-item.is-active,
+  .mnav-overlay__lang-item[aria-current="true"] {
+    color: var(--bg-dark);
+    background: linear-gradient(
+      135deg,
+      rgba(202, 168, 117, 0.92),
+      rgba(232, 208, 165, 0.85)
+    );
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                0 4px 12px -4px rgba(202, 168, 117, 0.35);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .mnav-overlay__lang-sep {
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    margin: 0 2px;
+    background: rgba(242, 239, 233, 0.18);
+    pointer-events: none;
+  }
+}
+
+/* Sakrij blok iz menija na desktopu — postoji u DOM-u radi mobile */
+@media (min-width: 769px) {
+  .mnav-overlay__lang {
+    display: none;
+  }
+}
