@@ -12,6 +12,9 @@
   /* ---------------------------------------------------------------
      1. PAGE LOADER — premium counter + progress bar
         (Skip na mobilnom — preloader off za uske ekrane)
+        (Skip i kad se prelazi sa linka unutar sajta — preloader se
+         pokrece samo jednom, pri stvarnom ulasku na byanicic.com,
+         a ne pri svakom klikom na interni link/podstranicu)
      --------------------------------------------------------------- */
   const loader         = document.getElementById('loader');
   const loaderCount    = document.getElementById('loaderCount');
@@ -20,9 +23,25 @@
   // Mobile detection — ista granica kao @media (max-width: 768px)
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-  if (isMobile) {
-    // Na mobilnom uopste ne pokrecemo preloader animaciju —
-    // odmah skidamo loader iz DOM-a i aktiviramo hero stanje.
+  // Da li je posetilac vec "usao" na sajt u ovoj sesiji (tab-u)?
+  // sessionStorage prezivljava navigaciju izmedju stranica, ali se
+  // gasi kad se tab/browser zatvori — tako da se preloader ponovo
+  // pokrece samo pri sledecem stvarnom ulasku na sajt.
+  let hasEnteredSite = false;
+  try {
+    hasEnteredSite = sessionStorage.getItem('bacSiteEntered') === '1';
+  } catch (e) {
+    // privatni mod / blokiran storage — ponasaj se kao da nije ulazio
+    hasEnteredSite = false;
+  }
+  try {
+    sessionStorage.setItem('bacSiteEntered', '1');
+  } catch (e) { /* ignorisi ako storage nije dostupan */ }
+
+  if (isMobile || hasEnteredSite) {
+    // Na mobilnom, ili kad je posetilac vec usao na sajt ranije u ovoj
+    // sesiji (dosao je klikom sa neke druge stranice sajta) — ne
+    // pokrecemo preloader animaciju, odmah aktiviramo hero stanje.
     if (loader) loader.remove();
     document.body.classList.add('is-ready');
   } else if (loader && !prefersReducedMotion) {
@@ -532,4 +551,64 @@
       }
     } catch (e) {}
   }
+
+  /* ---------------------------------------------------------------
+     HERO STRIP — blagi auto-scroll karusel (samo mobilni)
+     Traka se sama, sporo pomera; cim je korisnik dodirne/prevuce
+     prstom (ili scroll-uje misem), auto-pomeranje pauzira na par
+     sekundi i ostavlja mu punu rucnu kontrolu (native scroll).
+     --------------------------------------------------------------- */
+  (() => {
+    const carousel = document.querySelector('.hero__strip-carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.hero__strip-track');
+    if (!track) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) return;
+
+    const SPEED = 0.32; // px po frejmu — namerno sporo, "premium" tempo
+    const RESUME_DELAY = 2600; // ms pauze posle poslednjeg dodira
+
+    let rafId = null;
+    let paused = false;
+    let resumeTimer = null;
+
+    const isMobileNow = () => window.matchMedia('(max-width: 768px)').matches;
+
+    function step() {
+      if (!paused && isMobileNow()) {
+        const half = track.scrollWidth; // sirina jednog (od dva identicna) seta linkova
+        carousel.scrollLeft += SPEED;
+        if (carousel.scrollLeft >= half) {
+          carousel.scrollLeft -= half;
+        }
+      }
+      rafId = requestAnimationFrame(step);
+    }
+
+    function pauseForAWhile() {
+      paused = true;
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => { paused = false; }, RESUME_DELAY);
+    }
+
+    carousel.addEventListener('touchstart', pauseForAWhile, { passive: true });
+    carousel.addEventListener('pointerdown', pauseForAWhile);
+    carousel.addEventListener('wheel', pauseForAWhile, { passive: true });
+
+    if (isMobileNow()) {
+      rafId = requestAnimationFrame(step);
+    }
+
+    window.addEventListener('resize', () => {
+      if (!isMobileNow() && rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      } else if (isMobileNow() && !rafId) {
+        rafId = requestAnimationFrame(step);
+      }
+    });
+  })();
 })();

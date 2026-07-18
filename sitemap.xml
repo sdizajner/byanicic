@@ -5,12 +5,156 @@
 
   <url>
     <loc>https://byanicic.com/</loc>
-    <lastmod>2026-05-06</lastmod>
+    <lastmod>2026-07-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/" />
-    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/sr/</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/web-design.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/web-design.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/izrada-sajtova.html" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/izrada-sajtova.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/web-design.html" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/sr/izrada-sajtova.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/web-design.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/izrada-sajtova.html" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/izrada-sajtova.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/web-design.html" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/ui-ux-design.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/ui-ux-design.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/ui-ux-dizajn.html" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/ui-ux-dizajn.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/ui-ux-design.html" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/sr/ui-ux-dizajn.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/ui-ux-design.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/ui-ux-dizajn.html" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/ui-ux-dizajn.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/ui-ux-design.html" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/wordpress-design.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/wordpress-design.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/wordpress-sajtovi.html" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/wordpress-sajtovi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/wordpress-design.html" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/responsive-web-design.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/responsive-web-design.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/responsive-sajtovi.html" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/responsive-sajtovi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/responsive-web-design.html" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/sr/responsive-sajtovi.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/responsive-web-design.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/responsive-sajtovi.html" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/responsive-sajtovi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/responsive-web-design.html" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/brand-identity.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/brand-identity.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/vizuelni-identitet.html" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/vizuelni-identitet.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/brand-identity.html" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/sr/vizuelni-identitet.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/brand-identity.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/vizuelni-identitet.html" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/vizuelni-identitet.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/brand-identity.html" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/design-systems.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/design-systems.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/dizajn-sistemi.html" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/dizajn-sistemi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/design-systems.html" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/sr/dizajn-sistemi.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/design-systems.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/dizajn-sistemi.html" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/dizajn-sistemi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/design-systems.html" />
+  </url>
+
+  <url>
+    <loc>https://byanicic.com/sr/wordpress-sajtovi.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://byanicic.com/wordpress-design.html" />
+    <xhtml:link rel="alternate" hreflang="sr" href="https://byanicic.com/sr/wordpress-sajtovi.html" />
+    <xhtml:link rel="alternate" hreflang="sr-Latn" href="https://byanicic.com/sr/wordpress-sajtovi.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://byanicic.com/wordpress-design.html" />
   </url>
 
 </urlset>
