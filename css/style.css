@@ -5243,7 +5243,7 @@ body.mnav-open .language-float {
   line-height: 1.7;
   text-transform: none;
   letter-spacing: 0.02em;
-  font-size: 0.78rem;
+  font-size: var(--fs-body);
 }
 
 /* ---------- Footer: grupa "Trust" ---------- */
