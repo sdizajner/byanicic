@@ -225,6 +225,18 @@
   if (vplayer && vvideo) {
     const muteBtn = vplayer.querySelector('.vplayer__mute');
 
+    const playBtn = vplayer.querySelector('.vplayer__play');
+
+    /* Pristupacno ime dugmeta prati stanje (WCAG 4.1.2).
+       Tekst se cita iz data- atributa pa radi na oba jezika. */
+    const labelPlay  = (playBtn && playBtn.dataset.labelPlay)  || 'Play video';
+    const labelPause = (playBtn && playBtn.dataset.labelPause) || 'Pause video';
+
+    const syncPlayLabel = () => {
+      if (!playBtn) return;
+      playBtn.setAttribute('aria-label', vvideo.paused ? labelPlay : labelPause);
+    };
+
     const togglePlay = () => {
       if (vvideo.paused || vvideo.ended) {
         const p = vvideo.play();
@@ -234,29 +246,29 @@
         vvideo.pause();
         vplayer.classList.remove('is-playing');
       }
+      syncPlayLabel();
     };
 
     const toggleMute = (e) => {
       if (e) e.stopPropagation();
       vvideo.muted = !vvideo.muted;
-      vplayer.setAttribute('aria-pressed', vvideo.muted ? 'true' : 'false');
+      /* aria-pressed pripada samom dugmetu, ne omotacu */
+      if (muteBtn) muteBtn.setAttribute('aria-pressed', vvideo.muted ? 'true' : 'false');
     };
 
+    /* Omotac vise nije role="button" — klik mišem i dalje radi,
+       ali je pravi kontrol <button class="vplayer__play">, pa nema
+       ugnjezdenih interaktivnih elemenata. */
     vplayer.addEventListener('click', (e) => {
       if (e.target.closest('.vplayer__mute')) return;
       togglePlay();
     });
 
-    vplayer.addEventListener('keydown', (e) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault();
-        togglePlay();
-      }
-    });
-
     if (muteBtn) {
       muteBtn.addEventListener('click', toggleMute);
     }
+
+    syncPlayLabel();
 
     const offscreenObs = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -268,11 +280,11 @@
     }, { threshold: 0 });
     offscreenObs.observe(vplayer);
 
-    vvideo.addEventListener('play',  () => vplayer.classList.add('is-playing'));
-    vvideo.addEventListener('pause', () => vplayer.classList.remove('is-playing'));
-    vvideo.addEventListener('ended', () => vplayer.classList.remove('is-playing'));
+    vvideo.addEventListener('play',  () => { vplayer.classList.add('is-playing'); syncPlayLabel(); });
+    vvideo.addEventListener('pause', () => { vplayer.classList.remove('is-playing'); syncPlayLabel(); });
+    vvideo.addEventListener('ended', () => { vplayer.classList.remove('is-playing'); syncPlayLabel(); });
 
-    vplayer.setAttribute('aria-pressed', vvideo.muted ? 'true' : 'false');
+    if (muteBtn) muteBtn.setAttribute('aria-pressed', vvideo.muted ? 'true' : 'false');
   }
 
   /* ---------------------------------------------------------------
@@ -437,21 +449,64 @@
 
   if (mnavToggle && mnavOverlay) {
 
+    /* Natpisi za citace ekrana — uzimaju se iz data- atributa dugmeta
+       da bi radili i na srpskoj verziji; fallback je engleski. */
+    const labelOpen  = mnavToggle.dataset.labelOpen  || 'Open menu';
+    const labelClose = mnavToggle.dataset.labelClose || 'Close menu';
+
+    const FOCUSABLE =
+      'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+    const focusablesIn = () =>
+      Array.from(mnavOverlay.querySelectorAll(FOCUSABLE))
+        .filter(el => el.offsetParent !== null || el.getClientRects().length);
+
     const openMenu = () => {
       mnavOverlay.setAttribute('data-open', 'true');
       mnavOverlay.setAttribute('aria-hidden', 'false');
       mnavToggle.setAttribute('aria-expanded', 'true');
-      mnavToggle.setAttribute('aria-label', 'Close menu');
+      mnavToggle.setAttribute('aria-label', labelClose);
       document.body.classList.add('mnav-open');
+
+      /* Fokus ulazi u meni (WCAG 2.4.3). Overlay ima CSS tranziciju,
+         pa prvi element postaje fokusabilan tek posle nje. */
+      window.setTimeout(() => {
+        const first = focusablesIn()[0];
+        if (first) first.focus();
+      }, 60);
     };
 
     const closeMenu = () => {
       mnavOverlay.setAttribute('data-open', 'false');
       mnavOverlay.setAttribute('aria-hidden', 'true');
       mnavToggle.setAttribute('aria-expanded', 'false');
-      mnavToggle.setAttribute('aria-label', 'Open menu');
+      mnavToggle.setAttribute('aria-label', labelOpen);
       document.body.classList.remove('mnav-open');
+
+      /* Ako je fokus bio u meniju, vrati ga na dugme koje ga je otvorilo */
+      if (mnavOverlay.contains(document.activeElement)) mnavToggle.focus();
     };
+
+    /* Zadrzavanje fokusa unutar otvorenog menija — bez toga Tab odlazi
+       na sadrzaj iza overlay-a koji korisnik ne vidi. */
+    mnavOverlay.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      if (mnavToggle.getAttribute('aria-expanded') !== 'true') return;
+
+      const items = focusablesIn();
+      if (!items.length) return;
+
+      const first = items[0];
+      const last  = items[items.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
 
     const toggleMenu = () => {
       const isOpen = mnavToggle.getAttribute('aria-expanded') === 'true';
@@ -462,7 +517,7 @@
     mnavToggle.addEventListener('click', toggleMenu);
 
     /* Klik na bilo koji link u overlay-u zatvara meni */
-    mnavOverlay.querySelectorAll('[data-mnav-link]').forEach((a) => {
+    mnavOverlay.querySelectorAll('a[href]').forEach((a) => {
       a.addEventListener('click', () => {
         /* Mali delay da se native scroll trigger uhvati pre nestanka overlay-a */
         setTimeout(closeMenu, 50);
@@ -610,5 +665,60 @@
         rafId = requestAnimationFrame(step);
       }
     });
+  })();
+
+  /* ---------------------------------------------------------------
+     TRUST CENTER — expandable cards
+     Radi na svakoj stranici koja sadrzi .tcard blokove (trust-center.html,
+     sr/trust-center.html i sve buduce Trust podstranice).
+     Pristupacnost: pravi kontrol je <button aria-expanded>, panel se
+     povezuje preko aria-controls, a klik bilo gde po headeru kartice
+     samo prosledjuje akciju tom dugmetu.
+     --------------------------------------------------------------- */
+  (() => {
+    const cards = Array.from(document.querySelectorAll('.tcard'));
+    if (!cards.length) return;
+
+    const setOpen = (card, open) => {
+      const btn = card.querySelector('.tcard__toggle');
+      if (!btn) return;
+      card.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+
+    cards.forEach((card) => {
+      const btn = card.querySelector('.tcard__toggle');
+      const head = card.querySelector('.tcard__head');
+      if (!btn) return;
+
+      const toggle = () => setOpen(card, btn.getAttribute('aria-expanded') !== 'true');
+
+      btn.addEventListener('click', toggle);
+
+      /* Ceo header je klikabilan, ali klik na samo dugme ne duplira akciju */
+      if (head) {
+        head.addEventListener('click', (e) => {
+          if (e.target.closest('.tcard__toggle')) return;
+          if (e.target.closest('a')) return;
+          toggle();
+        });
+      }
+    });
+
+    /* Deep link: /trust-center.html#privacy otvara i fokusira tu sekciju */
+    const openFromHash = () => {
+      const id = window.location.hash.slice(1);
+      if (!id) return;
+      const card = document.getElementById(id);
+      if (!card || !card.classList.contains('tcard')) return;
+      setOpen(card, true);
+      card.scrollIntoView({
+        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+        block: 'center'
+      });
+    };
+
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
   })();
 })();

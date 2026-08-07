@@ -172,6 +172,7 @@
       <button class="mnav-toggle"
               id="mnavToggle"
               type="button"
+              data-label-open="Otvori meni" data-label-close="Zatvori meni"
               aria-expanded="false"
               aria-controls="mnavOverlay"
               aria-label="Otvori meni">
@@ -230,9 +231,9 @@
         <div class="mnav-overlay__lang" role="group" aria-label="Izbor jezika">
           <span class="mnav-overlay__lang-label">— Jezik</span>
           <div class="mnav-overlay__lang-options">
-            <a href="../responsive-web-design.html" class="mnav-overlay__lang-item">EN</a>
+            <a href="../responsive-web-design.html" class="mnav-overlay__lang-item" lang="en" hreflang="en">EN<span class="u-sr-only"> &mdash; English</span></a>
             <span class="mnav-overlay__lang-sep" aria-hidden="true"></span>
-            <a href="responsive-sajtovi.html" class="mnav-overlay__lang-item is-active" aria-current="true">SR</a>
+            <a href="responsive-sajtovi.html" class="mnav-overlay__lang-item is-active" aria-current="page" lang="sr-Latn" hreflang="sr-Latn">SR<span class="u-sr-only"> &mdash; Srpski</span></a>
           </div>
         </div>
 
@@ -256,7 +257,7 @@
     </div>
   </div>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <span id="top" tabindex="-1" aria-hidden="true"></span>
 
     <section class="about about--page-top" aria-labelledby="page-heading">
@@ -389,6 +390,18 @@
   </main>
 
   <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__groups">
+      <nav class="footer-group" aria-label="Poverenje">
+        <span class="meta-label">Poverenje</span>
+        <ul class="footer-group__list">
+          <li><a href="trust-center.html" class="footer-group__link" data-cursor="link">
+            <span class="footer-group__link-main">Trust Center</span>
+            <span class="footer-group__link-sub">Privatnost, AI transparentnost i uslovi korišćenja</span>
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+
     <div class="site-footer__inner">
       <div class="site-footer__brand">
         <a href="index.html" class="brand brand--inv" aria-label="Aleksandar Aničić — nazad na početnu">
@@ -411,8 +424,8 @@
   </footer>
 
   <nav class="language-float" aria-label="Izbor jezika">
-    <a href="../responsive-web-design.html" class="language-float__item">EN</a>
-    <a href="responsive-sajtovi.html" class="language-float__item is-active" aria-current="true">SR</a>
+    <a href="../responsive-web-design.html" class="language-float__item" lang="en" hreflang="en">EN<span class="u-sr-only"> &mdash; English</span></a>
+    <a href="responsive-sajtovi.html" class="language-float__item is-active" aria-current="page" lang="sr-Latn" hreflang="sr-Latn">SR<span class="u-sr-only"> &mdash; Srpski</span></a>
   </nav>
 
   <script src="../js/main.js?v=1784412281" defer></script>

@@ -70,9 +70,6 @@
        ============================================================ -->
   <link rel="preload" as="image" href="../images/logo.png" fetchpriority="high" />
 
-  <!-- ============================================================
-       FONTOVI — async loading
-       ============================================================ -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -129,7 +126,10 @@
           "Responsive dizajn sajtova",
           "Freelance web dizajn"
         ],
-        "knowsLanguage": ["sr", "en"],
+        "knowsLanguage": [
+          "sr",
+          "en"
+        ],
         "sameAs": [
           "https://dribbble.com/aleksandaranicic",
           "https://www.behance.net/aleksandaranicic",
@@ -148,9 +148,18 @@
         "email": "byanicic@gmail.com",
         "telephone": "+381694544520",
         "areaServed": [
-          { "@type": "Country", "name": "Srbija" },
-          { "@type": "Place", "name": "Evropska unija" },
-          { "@type": "Country", "name": "Sjedinjene Američke Države" }
+          {
+            "@type": "Country",
+            "name": "Srbija"
+          },
+          {
+            "@type": "Place",
+            "name": "Evropska unija"
+          },
+          {
+            "@type": "Country",
+            "name": "Sjedinjene Američke Države"
+          }
         ],
         "address": {
           "@type": "PostalAddress",
@@ -162,7 +171,9 @@
           "latitude": 44.7866,
           "longitude": 20.4489
         },
-        "founder": { "@id": "https://byanicic.com/#person" },
+        "founder": {
+          "@id": "https://byanicic.com/#person"
+        },
         "makesOffer": [
           {
             "@type": "Offer",
@@ -212,8 +223,125 @@
         "url": "https://byanicic.com/sr/",
         "name": "Aleksandar Aničić",
         "description": "Portfolio Aleksandra Aničića, web i UI/UX dizajnera iz Beograda.",
-        "publisher": { "@id": "https://byanicic.com/#person" },
+        "publisher": {
+          "@id": "https://byanicic.com/#person"
+        },
         "inLanguage": "sr-Latn"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://byanicic.com/sr/#webpage",
+        "url": "https://byanicic.com/sr/",
+        "name": "Izrada Sajtova Beograd — Aleksandar Aničić",
+        "description": "Freelance izrada sajtova, UI/UX i WordPress dizajn iz Beograda za preduzeća, profesionalce i lične brendove.",
+        "inLanguage": "sr-Latn",
+        "isPartOf": {
+          "@id": "https://byanicic.com/#website"
+        },
+        "about": {
+          "@id": "https://byanicic.com/#person"
+        },
+        "primaryImageOfPage": {
+          "@id": "https://byanicic.com/sr/#primaryimage"
+        },
+        "hasPart": {
+          "@id": "https://byanicic.com/sr/#video"
+        }
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://byanicic.com/sr/#primaryimage",
+        "url": "https://byanicic.com/images/og-cover-sr.jpg",
+        "contentUrl": "https://byanicic.com/images/og-cover-sr.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://byanicic.com/sr/#video",
+        "name": "Rođendanska pozivnica — animirana vertikalna video čestitka",
+        "description": "Vertikalna animirana video pozivnica napravljena za ekran telefona: tipografija koja diše, pokret koji zna kada da stane i zvuk koji se rado pušta dvaput.",
+        "thumbnailUrl": "https://byanicic.com/images/gala-invitation-poster.jpg",
+        "contentUrl": "https://byanicic.com/images/gala-invitation.mp4",
+        "encodingFormat": "video/mp4",
+        "width": 416,
+        "height": 752,
+        "duration": "PT6S",
+        "uploadDate": "2026-08-07",
+        "inLanguage": "sr-Latn",
+        "isFamilyFriendly": true,
+        "creator": {
+          "@id": "https://byanicic.com/#person"
+        }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://byanicic.com/sr/#selectedwork",
+        "name": "Izabrani radovi",
+        "numberOfItems": 4,
+        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Swift Luxury Apartments Concept",
+              "url": "https://sdizajner.github.io/swift-luxury-apartments/",
+              "image": "https://byanicic.com/images/project-01.jpg",
+              "genre": "Konceptualni projekat",
+              "inLanguage": "sr-Latn",
+              "creator": {
+                "@id": "https://byanicic.com/#person"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Ecological Home Concept",
+              "url": "https://sdizajner.github.io/ecological-home/",
+              "image": "https://byanicic.com/images/project-02.jpg",
+              "genre": "Konceptualni projekat",
+              "inLanguage": "sr-Latn",
+              "creator": {
+                "@id": "https://byanicic.com/#person"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Psihoterapeut — sajt prakse",
+              "url": "https://sdizajner.github.io/Psihoterapeut/index.html",
+              "image": "https://byanicic.com/images/project-03.jpg",
+              "genre": "Klijentski projekat",
+              "inLanguage": "sr-Latn",
+              "creator": {
+                "@id": "https://byanicic.com/#person"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "CreativeWork",
+              "name": "Wedding Invitation Concept",
+              "url": "https://sdizajner.github.io/wedding-invitation/",
+              "image": "https://byanicic.com/images/wedding.jpg",
+              "genre": "Konceptualni projekat",
+              "inLanguage": "sr-Latn",
+              "creator": {
+                "@id": "https://byanicic.com/#person"
+              }
+            }
+          }
+        ]
       }
     ]
   }
@@ -288,6 +416,7 @@
       <button class="mnav-toggle"
               id="mnavToggle"
               type="button"
+              data-label-open="Otvori meni" data-label-close="Zatvori meni"
               aria-expanded="false"
               aria-controls="mnavOverlay"
               aria-label="Otvori meni">
@@ -349,9 +478,9 @@
         <div class="mnav-overlay__lang" role="group" aria-label="Izbor jezika">
           <span class="mnav-overlay__lang-label">— Jezik</span>
           <div class="mnav-overlay__lang-options">
-            <a href="../index.html" class="mnav-overlay__lang-item" data-lang-switch="en">EN</a>
+            <a href="../index.html" class="mnav-overlay__lang-item" data-lang-switch="en" lang="en" hreflang="en">EN<span class="u-sr-only"> &mdash; English</span></a>
             <span class="mnav-overlay__lang-sep" aria-hidden="true"></span>
-            <a href="index.html" class="mnav-overlay__lang-item is-active" aria-current="true">SR</a>
+            <a href="index.html" class="mnav-overlay__lang-item is-active" aria-current="page" lang="sr-Latn" hreflang="sr-Latn">SR<span class="u-sr-only"> &mdash; Srpski</span></a>
           </div>
         </div>
 
@@ -375,7 +504,7 @@
     </div>
   </div>
 
-  <main id="main">
+  <main id="main" tabindex="-1">
     <span id="top" tabindex="-1" aria-hidden="true"></span>
 
     <!-- ============================================================
@@ -417,7 +546,7 @@
           </div>
 
           <ul class="hero__meta-row" data-reveal aria-label="Ključni podaci o praksi">
-            <li><strong>40+</strong><span>Realizovanih projekata</span></li>
+            <li><strong>40+</strong><span>Projekata i koncepata</span></li>
             <li><strong>4+</strong><span>Godina iskustva</span></li>
             <li><strong>Freelancer</strong><span>Beograd / Svet</span></li>
           </ul>
@@ -674,12 +803,18 @@
           Nekoliko projekata<br/>
           <em class="accent">na koje sam ponosan.</em>
         </h2>
+        <p class="work__note meta-label" data-reveal>
+          Konceptualni projekti su samoinicijativni, klijentski naručeni.
+          Prezentacione scene i mockupovi mogu biti generisani AI-jem, po mojim
+          promptovima &mdash; vizuelni identitet, raspored, interfejs i kreativni
+          pravac u njima su moj rad.
+        </p>
       </header>
 
       <div class="work__category">
         <div class="cat-head">
           <span class="meta-label">01 &mdash; Izrada sajtova</span>
-          <span class="meta-label cat-head__count">Četiri od četrdeset</span>
+          <span class="meta-label cat-head__count">Četiri od četrdeset &middot; klijentski i konceptualni</span>
         </div>
 
         <div class="grid-3">
@@ -692,7 +827,7 @@
             </div>
             <div class="proj__meta">
               <h3 class="proj__title">Swift Luxury Apartments Concept &mdash; <em>sajt</em></h3>
-              <span class="meta-label">Apartmani &middot; web dizajn</span>
+              <span class="meta-label">Apartmani &middot; konceptualni projekat</span>
             </div>
           </a>
 
@@ -705,7 +840,7 @@
             </div>
             <div class="proj__meta">
               <h3 class="proj__title">Ecological Home Concept &mdash; <em>sajt</em></h3>
-              <span class="meta-label">Održivost &middot; web dizajn</span>
+              <span class="meta-label">Održivost &middot; konceptualni projekat</span>
             </div>
           </a>
 
@@ -718,7 +853,7 @@
             </div>
             <div class="proj__meta">
               <h3 class="proj__title">Psihoterapeut &mdash; <em>sajt</em></h3>
-              <span class="meta-label">Zdravstvo &middot; web dizajn</span>
+              <span class="meta-label">Zdravstvo &middot; klijentski projekat</span>
             </div>
           </a>
 
@@ -731,7 +866,7 @@
             </div>
             <div class="proj__meta">
               <h3 class="proj__title">Wedding Invitation Concept &mdash; <em>sajt</em></h3>
-              <span class="meta-label">Pozivnica &middot; web dizajn</span>
+              <span class="meta-label">Pozivnica &middot; konceptualni projekat</span>
             </div>
           </a>
         </div>
@@ -841,8 +976,7 @@
     <section class="featured" aria-labelledby="featured-heading">
       <div class="featured__inner">
         <div class="featured__media">
-          <div class="vplayer" id="vplayer" role="button" tabindex="0"
-               aria-label="Pusti video pozivnicu za rođendan">
+          <div class="vplayer" id="vplayer">
             <div class="vplayer__frame">
               <video class="vplayer__video"
                      id="vplayerVideo"
@@ -856,7 +990,7 @@
               </video>
 
               <div class="vplayer__overlay">
-                <button class="vplayer__play" type="button"
+                <button class="vplayer__play" type="button" data-label-play="Pusti video" data-label-pause="Pauziraj video"
                         aria-label="Pusti video">
                   <svg viewBox="0 0 80 80" aria-hidden="true">
                     <circle cx="40" cy="40" r="38" fill="none"
@@ -906,7 +1040,7 @@
             <li>Pozivnica</li>
             <li>Vertikalni video</li>
           </ul>
-          <a href="#birthday-invitation" target="_blank" rel="noopener"
+          <a href="#contact"
              class="link-arrow" data-cursor="link" data-magnetic>
             <span>Pogledaj celu pozivnicu</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="square"/></svg>
@@ -1021,6 +1155,18 @@
        FOOTER
        ============================================================ -->
   <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__groups">
+      <nav class="footer-group" aria-label="Poverenje">
+        <span class="meta-label">Poverenje</span>
+        <ul class="footer-group__list">
+          <li><a href="trust-center.html" class="footer-group__link" data-cursor="link">
+            <span class="footer-group__link-main">Trust Center</span>
+            <span class="footer-group__link-sub">Privatnost, AI transparentnost i uslovi korišćenja</span>
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+
     <div class="site-footer__inner">
       <div class="site-footer__brand">
         <a href="#top" class="brand brand--inv" aria-label="Aleksandar Aničić — vrati se na vrh">
@@ -1046,8 +1192,8 @@
        LANGUAGE FLOAT — desktop floating switcher (sakriven na mobilnom)
        ============================================================ -->
   <nav class="language-float" aria-label="Izbor jezika">
-    <a href="../index.html" class="language-float__item" data-lang-switch="en">EN</a>
-    <a href="index.html" class="language-float__item is-active" aria-current="true">SR</a>
+    <a href="../index.html" class="language-float__item" data-lang-switch="en" lang="en" hreflang="en">EN<span class="u-sr-only"> &mdash; English</span></a>
+    <a href="index.html" class="language-float__item is-active" aria-current="page" lang="sr-Latn" hreflang="sr-Latn">SR<span class="u-sr-only"> &mdash; Srpski</span></a>
   </nav>
 
   <script src="../js/main.js?v=1784412281" defer></script>
